@@ -1,0 +1,10 @@
+_BASE_: [
+  '../datasets/coco_detection_VEDAI.yml',
+  '../runtime_vedai.yml',
+  '_base_/optimizer_vedai.yml',
+  '_base_/damsdet_r50vd_1024.yml',
+  '_base_/damsdet_reader_1024.yml',
+]
+
+find_unused_parameters: True
+log_iter: 200

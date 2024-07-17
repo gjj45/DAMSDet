@@ -1,0 +1,23 @@
+metric: COCO
+num_classes: 3
+
+TrainDataset:
+  name: Mutisprctral_COCODataSet
+  vis_image_dir: train_imgs/vis_imgs
+  ir_image_dir : train_imgs/ir_imgs
+  anno_path: annotations/train.json
+  dataset_dir: dataset/coco_FLIR_align
+  data_fields: ['image', 'gt_bbox', 'gt_class', 'is_crowd']
+
+EvalDataset:
+  name: Mutisprctral_COCODataSet
+  vis_image_dir: val_imgs/vis_imgs
+  ir_image_dir: val_imgs/ir_imgs
+  anno_path: annotations/val.json
+  dataset_dir: dataset/coco_FLIR_align
+  allow_empty: true
+
+TestDataset:
+  name: Multi_ImageFolder
+  anno_path: annotations/label_list.txt # also support txt (like VOC's label_list.txt)
+  dataset_dir: dataset/coco_FLIR_align # if set, anno_path will be 'dataset_dir/anno_path'
