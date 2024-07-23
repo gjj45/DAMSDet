@@ -1,0 +1,10 @@
+_BASE_: [
+  '../datasets/coco_detection_FLIR_align.yml',
+  '../runtime_flir.yml',
+  '_base_/optimizer.yml',
+  '_base_/damsdet_r50vd.yml',
+  '_base_/damsdet_reader.yml',
+]
+
+find_unused_parameters: True
+log_iter: 200

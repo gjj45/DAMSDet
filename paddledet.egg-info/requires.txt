@@ -1,0 +1,16 @@
+numpy<1.24
+tqdm
+typeguard
+visualdl>=2.2.0
+opencv-python<=4.6.0
+PyYAML
+shapely
+scipy
+terminaltables
+Cython
+pycocotools
+setuptools
+lap
+motmetrics
+sklearn==0.0
+pyclipper

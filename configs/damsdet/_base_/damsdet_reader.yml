@@ -1,0 +1,43 @@
+worker_num: 4
+TrainReader:
+  sample_transforms:
+    - Multi_Decode: {}
+    - Multi_RandomDistort: {prob: 0.8}
+    - Multi_RandomExpand_IRVIS: {fill_value: [123.675, 116.28, 103.53], fill_value_ir: [114.495, 114.495, 114.495]}
+    - Multi_RandomCrop: {prob: 0.8}
+    - Multi_RandomFlip: {}
+  batch_transforms:
+    - Multi_BatchRandomResize: {target_size: [480, 512, 544, 576, 608, 640, 640, 640, 672, 704, 736, 768, 800], random_size: True, random_interp: True, keep_ratio: False}
+    - Multi_NormalizeImage: {mean: [0., 0., 0.], std: [1., 1., 1.], norm_type: none}
+    - Multi_NormalizeBox: {}
+    - BboxXYXY2XYWH: {}
+    - Multi_Permute: {}
+  batch_size: 4
+  shuffle: true
+  drop_last: true
+  collate_batch: false
+  use_shared_memory: false
+
+
+EvalReader:
+  sample_transforms:
+    - Multi_Decode: {}
+    - Multi_Resize: {target_size: [640, 640], keep_ratio: False, interp: 2}
+    - Multi_NormalizeImage: {mean: [0., 0., 0.], std: [1., 1., 1.], norm_type: none}
+    - Multi_Permute: {}
+  batch_size: 4
+  shuffle: false
+  drop_last: false
+
+
+TestReader:
+  inputs_def:
+    image_shape: [3, 640, 640]
+  sample_transforms:
+    - Multi_Decode: {}
+    - Multi_Resize: {target_size: [640, 640], keep_ratio: False, interp: 2}
+    - Multi_NormalizeImage: {mean: [0., 0., 0.], std: [1., 1., 1.], norm_type: none}
+    - Multi_Permute: {}
+  batch_size: 1
+  shuffle: false
+  drop_last: false

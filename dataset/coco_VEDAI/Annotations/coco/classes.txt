@@ -1,0 +1,9 @@
+car
+truck
+pickup
+tractor
+camper
+boat
+van
+plane
+vehicle
